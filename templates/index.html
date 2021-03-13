@@ -1,0 +1,129 @@
+{#EXAMPLE 1#}
+
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<div>#}
+{#    <div style="border: 2px darkblue solid">#}
+{#        {{ my_num }}#}
+{#    </div>#}
+{#    <div style="border: 2px darkseagreen solid">#}
+{#        {{ my_str }}#}
+{#    </div>#}
+{#    <div style="border: 2px fuchsia solid">#}
+{#        {{ my_set }}#}
+{#    </div>#}
+{#    <div style="border: 2px firebrick solid">#}
+{#        {{ my_dict.some_key }}#}
+{#    </div>#}
+{##}
+{#    <div style="border: 2px cyan solid">#}
+{#        {{ my_class.string }}#}
+{#    </div>#}
+{#    <div style="border: 2px cyan solid">#}
+{#        {{ my_list.0 }}#}
+{#    </div>#}
+{#    <div style="border: 2px burlywood solid">#}
+{#        {{ my_tuple.1 }}#}
+{#    </div>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+
+{#EXAMPLE 2#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<div>#}
+{#    {% if display_num %}#}
+{#        {{ my_num }}#}
+{#    {% else %}#}
+{#        <span> We don't display num </span>#}
+{#    {% endif %}#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+
+
+{#EXAMPLE 3#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<div>#}
+{#    {% for item in my_list %}#}
+{#        <span>{{ item }}</span>#}
+{#        <br>#}
+{#    {% endfor %}#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+
+
+{#EXAMPLE 4#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<div>#}
+{#    {% for item in my_list %}#}
+{#        {% if forloop.counter0 != 1 %}#}
+{#            <span>{{ item }}</span>#}
+{#            <br>#}
+{#        {% endif %}#}
+{#    {% endfor %}#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+
+
+{#EXAMPLE 5#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Title</title>#}
+{#</head>#}
+{#<body>#}
+{#<div>#}
+{#    <a href="{% url 'first' %}">Another page</a>#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
+
+
+
+{#EXAMPLE 6#}
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{#{% include 'add.html' with name='Olha' %}#}
+{#<div style="padding: 20px; background-color: fuchsia"> Extended template index!</div>#}
+{#<a href="{% url 'first' %}">To the first page</a>#}
+{#{% endblock %}#}
+
+
+{#EXAMPLE 7#}
+{% extends 'base.html' %}
+
+{% block content %}
+<div>{{ now| date:"SHORT_DATE_FORMAT" }}</div>
+<div>{{ now|date:"D d M Y" }} {{ value|time:"H:i" }}</div>
+<div>{{ not_exist|default:"nothing" }}</div>
+<div>{{ my_str | capfirst }}</div>
+<div>{{ my_list | join:"**" }}</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{#{% extends 'base.html' %}#}
+{##}
+{#{% block content %}#}
+{#<form method="post" action="{% url 'form-view' %}">#}
+{#    {% csrf_token %}#}
+{#    <label>#}
+{#        <input type="text" name="my_name">#}
+{#    </label>#}
+{#    <button type="submit">Send name</button>#}
+{#</form>#}
+{#{% endblock %}#}
+
+{#EXAMPLE 2#}
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post" action="{% url 'form-view' %}">
+    {% csrf_token %}
+{{ form.non_field_errors }}
+{% for field in form %}
+<div class="fieldWrapper">
+    {{ field.errors }}
+    {{ field.label_tag }} {{ field }}
+    {% if field.help_text %}
+    <p class="help">{{ field.help_text|safe }}</p>
+    {% endif %}
+</div>
+{% endfor %}
+    <button type="submit">Send form</button>
+</form>
+{% endblock %}
